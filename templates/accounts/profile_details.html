@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block page_content %}
+    <body class="u-body u-overlap u-xl-mode">
+    <section class="u-clearfix u-custom-color-2 u-section-1" id="sec-3d26">
+        <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+            <div class="u-clearfix u-layout-wrap u-layout-wrap-1">
+                <div class="u-layout">
+                    <div class="u-layout-row">
+                        <div class="u-container-style u-custom-color-4 u-layout-cell u-size-17 u-layout-cell-1">
+                            <div class="u-container-layout u-container-layout-1">
+                                <div class="u-image u-image-circle u-preserve-proportions u-image-1" alt=""
+                                     data-image-width="700" data-image-height="774"
+                                     style=" background-image: url({{ object.picture.url }})"></div>
+                                <div>
+                                    <a href="{% url 'edit profile' object.user.pk %}"
+                                       class="u-border-none u-btn u-btn-round u-button-style u-hover-white u-palette-1-base u-radius-6 u-btn-1">Edit</a>
+                                    <a href="{% url 'change password' %}"
+                                       class="u-border-none u-btn u-btn-round u-button-style u-hover-white u-palette-4-base u-radius-6 u-btn-2">Change
+                                        Password</a>
+                                    <a href="{% url 'delete profile' object.pk %}"
+                                       class="u-border-none u-btn u-btn-round u-button-style u-hover-white u-palette-3-base u-radius-6 u-btn-3">Delete</a>
+                                </div>
+                                <h3 class="u-align-center u-custom-font u-text u-text-1">{{ object.get_full_name }}</h3>
+                                <div class="u-container-style u-custom-color-4 u-group u-group-1">
+                                    <div class="u-container-layout u-container-layout-2"><span
+                                            class="u-custom-color-4 u-file-icon u-icon u-icon-circle u-icon-1"><img
+                                            src="{% static 'img/2.png' %}" alt=""></span>
+                                        <h4 class="u-align-center u-text u-text-2">{{ object.gender }}</h4><span
+                                                class="u-custom-color-4 u-file-icon u-icon u-icon-2"><img
+                                                src="{% static 'img/3.png' %}" alt=""></span>
+                                        <h4 class="u-align-center u-text u-text-3">{{ object.user.email }}</h4><span
+                                                class="u-custom-color-4 u-file-icon u-icon u-icon-circle u-icon-3"><img
+                                                src="{% static 'img/4.png' %}" alt=""></span>
+                                        <h1 class="u-text u-text-4">{{ object.budget }}</h1>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="u-text u-text-5"> {{ object.description }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="u-align-left u-container-style u-layout-cell u-size-43 u-layout-cell-2">
+                            <div class="u-container-layout u-container-layout-3">
+                                <h1 class="u-text u-text-6">RENTED GAMES</h1>
+                                <div class="u-table u-table-responsive u-table-1">
+                                    <table class="u-table-entity">
+                                        <colgroup>
+                                            <col width="24.8%">
+                                            <col width="26%">
+                                            <col width="23.2%">
+                                            <col width="25.9%">
+                                        </colgroup>
+                                        <thead class="u-align-center u-grey-10 u-table-header u-table-header-1">
+                                        <tr style="height: 148px;">
+                                            <th class="u-border-2 u-border-palette-1-light-1 u-custom-color-4 u-table-cell u-table-cell-1">
+                                                GAME
+                                            </th>
+                                            <th class="u-border-2 u-border-palette-1-light-1 u-custom-color-4 u-table-cell u-table-cell-2">
+                                                END DATE
+                                            </th>
+                                            <th class="u-border-2 u-border-palette-1-light-1 u-custom-color-4 u-table-cell u-table-cell-3">
+                                                AMOUNT
+                                            </th>
+                                            <th class="u-border-2 u-border-palette-1-light-1 u-custom-color-4 u-table-cell u-table-cell-4">
+                                                RETURN
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody class="u-align-center u-grey-90 u-table-alt-grey-80 u-table-body u-table-body-1">
+                                        {% for rented_game in rented_games %}
+                                            <tr style="height: 91px;">
+                                                <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-5">{{ rented_game.game.name }}
+                                                </td>
+                                                <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-6">
+                                                    {{ rented_game.return_date }}
+                                                </td>
+                                                <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-7">{{ rented_game.amount|floatformat:2 }}
+                                                    $
+                                                </td>
+                                                <td class="u-border-2 u-border-grey-75 u-table-cell u-table-cell-8">
+                                                    <form method="POST" action="{% url "return game" rented_game.pk %}">
+                                                        {% csrf_token %}
+                                                        <button type="submit" class="u-btn u-button-style u-btn-4">OK</button>
+                                                    </form>
+
+
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}

@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+<body>
+
+<div id="preloder">
+    <div class="loader"></div>
+</div>
+
+
+
+{% block page_content %}
+
+
+
+
+    <section class="product-page spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="product__page__content">
+                        <div class="product__page__title">
+                            <div class="row">
+                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                    <div class="section-title">
+                                        <h4>Catalogue</h4>
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-6">
+                                    <div class="product__page__filter">
+
+                                        <form method="get">
+                                            {{ filters.form }}
+
+                                            <button type="submit">OK</button>
+
+
+                                        </form>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            {% for game in object_list %}
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="product__item">
+                                        <a href="{% url 'game details' game.pk %}">
+                                            <div class="product__item__pic set-bg" data-setbg="{{ game.image.url }}">
+                                                <div class="ep">$ {{ price_per_day|floatformat:2 }}/ per day</div>
+                                                <div class="likes"><i class="icon_like_alt"></i> {{ game.likes }}</div>
+                                                <div class="view"><i class="fa fa-eye"></i>{{ game.views }}</div>
+                                            </div>
+                                        </a>
+                                        <div class="product__item__text">
+
+                                            <h5><a href="{% url 'game details' game.pk %}">{{ game.name }}</a></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                    <div class="product__pagination">
+                        {% if page_obj.has_previous %}
+                            <a href="?page={{ page_obj.previous_page_number }}&ordering={{ filters.ordering }}"><i
+                                    class="fa fa-angle-double-left"></i></a>
+                        {% endif %}
+                        {% for page in paginator.page_range %}
+                            {% if page_obj.number == page %}
+                                <a href="?page={{ page.numerator }}&ordering={{ order_by }}"
+                                   class="current-page">{{ page.numerator }}</a>
+                            {% else %}
+                                <a href="?page={{ page.numerator }}&ordering={{ order_by }}">{{ page.numerator }}</a>
+                            {% endif %}
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+
+                            <a href="?page={{ page_obj.next_page_number }}&ordering={{ order_by }}"><i
+                                    class="fa fa-angle-double-right"></i></a>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-8">
+                    <div class="product__sidebar">
+                        <div class="product__sidebar__view">
+                            <div class="section-title">
+                                <h5>Last Viewed</h5>
+                            </div>
+
+                            <div class="filter__gallery">
+                                {% for game in last_viewed_games %}
+                                    <a href="{% url 'game details' game.pk %}">
+                                        <div class="product__sidebar__view__item set-bg mix day years"
+                                             data-setbg="{{ game.image.url }}">
+
+
+                                        </div>
+                                    </a>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
