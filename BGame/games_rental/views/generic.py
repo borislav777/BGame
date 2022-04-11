@@ -36,7 +36,7 @@ class HomeView(views.ListView):
 
 
 class CatalogueView(LoginRequired, views.ListView):
-    login_url = reverse_lazy('login')
+
     model = Game
     template_name = 'games_rental/catalogue.html'
     paginate_by = 6

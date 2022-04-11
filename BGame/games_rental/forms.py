@@ -1,3 +1,5 @@
+import datetime
+
 from django import forms
 from django.core.exceptions import ValidationError, NON_FIELD_ERRORS
 
@@ -26,7 +28,7 @@ class RentGameForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        if self.initial.get('game').status == 'Coming Soon':
+        if self.initial.get('game').release_date > datetime.date.today():
             self.fields['date'].initial = self.initial.get('game').release_date
 
     class Meta:
