@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -40,7 +41,9 @@ DJANGO_APPS = (
     'django_filters',
 )
 
-THIRD_PARTY_APPS = ()
+THIRD_PARTY_APPS = (
+
+)
 
 B_GAME_APPS = (
     'BGame.games_rental',
@@ -50,14 +53,16 @@ B_GAME_APPS = (
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + B_GAME_APPS
 
 MIDDLEWARE = [
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'BGame.urls'
@@ -141,8 +146,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_ROOT = BASE_DIR / 'static'
-STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_URL = 'static/'
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
