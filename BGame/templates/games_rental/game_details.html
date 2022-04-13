@@ -11,8 +11,6 @@
 
 {% block page_content %}
 
-
-
     <section class="game-details spad">
         <div class="container">
             <div class="game__details__content">
@@ -37,7 +35,6 @@
                                             <li><span>Genre:</span> {{ object.genre }}</li>
                                             <li><span>Publisher:</span> {{ object.publisher }}</li>
                                             <li><span>Release Date:</span> {{ object.release_date }}</li>
-
                                         </ul>
                                     </div>
                                     <div class="col-lg-6 col-md-6">
@@ -45,7 +42,6 @@
                                             <li><span>Platform:</span>{{ object.platform }}</li>
                                             <li><span>Likes:</span> {{ object.likes }}</li>
                                             <li><span>Views:</span> {{ object.views }}</li>
-
                                         </ul>
                                     </div>
                                 </div>
@@ -103,7 +99,6 @@
                             {% csrf_token %}
                             {{ form }}
 
-
                             <button type="submit"><i class="fa fa-location-arrow"></i> Review</button>
                         </form>
                     </div>
@@ -117,7 +112,6 @@
                             <a href="{% url 'game details' game.pk %}">
                                 <div class="product__sidebar__view__item set-bg"
                                      data-setbg="{{ game.image.url }}">
-
                                 </div>
                             </a>
                         {% endfor %}

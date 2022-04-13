@@ -2,24 +2,23 @@
 {% load static %}
 
 {% block page_content %}
-
     <section class="hero">
         <div class="container">
             <div class="hero__slider owl-carousel">
-                {% for baner in slider %}
+                {% for banner in slider %}
                     <div class="hero__items set-bg"
-                         data-setbg="{{ baner.image.url }}">
+                         data-setbg="{{ banner.image.url }}">
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="hero__text">
-                                    <div class="label">{{ baner.game.genre }}</div>
-                                    <h2>{{ baner.game.name }}</h2>
-                                    <p>{{ baner.game.publisher }}</p>
+                                    <div class="label">{{ banner.game.genre }}</div>
+                                    <h2>{{ banner.game.name }}</h2>
+                                    <p>{{ banner.game.publisher }}</p>
                                     {% if request.user.is_staff %}
-                                        <a  href="{% url 'edit slidebar' baner.pk %}"><span>EDIT</span> <i
+                                        <a  href="{% url 'edit slider' banner.pk %}"><span>EDIT</span> <i
                                                 class="fa fa-angle-right"></i></a>
                                     {% else %}
-                                        <a href="{% url 'rent game' baner.game.pk %}"><span>RENT IT</span> <i
+                                        <a href="{% url 'rent game' banner.game.pk %}"><span>RENT IT</span> <i
                                                 class="fa fa-angle-right"></i></a>
                                     {% endif %}
                                 </div>

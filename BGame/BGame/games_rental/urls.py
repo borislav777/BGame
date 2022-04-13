@@ -18,8 +18,8 @@ urlpatterns = (
 
     path('genre/add/', AddGenreView.as_view(), name='add genre'),
     path('platform/add/', AddPlatformView.as_view(), name='add platform'),
-    path('slidebar/add/', AddSliderView.as_view(), name='add slidebar'),
-    path('slidebar/edit/<int:pk>', EditSliderView.as_view(), name='edit slidebar'),
+    path('slidebar/add/', AddSliderView.as_view(), name='add slider'),
+    path('slidebar/edit/<int:pk>', EditSliderView.as_view(), name='edit slider'),
 
     path('game/details/<int:pk>', GameDetailsView.as_view(), name='game details'),
     path('game/rent/<int:pk>', RentGameView.as_view(), name='rent game'),

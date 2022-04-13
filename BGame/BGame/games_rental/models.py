@@ -111,6 +111,9 @@ class Review(models.Model):
         on_delete=models.CASCADE,
     )
 
+    def __str__(self):
+        return f"{self.game}"
+
 
 class Like(models.Model):
     game = models.ForeignKey(
@@ -160,3 +163,6 @@ class Slider(models.Model):
         Game,
         on_delete=models.CASCADE,
     )
+
+    def __str__(self):
+        return f"{self.game}"

@@ -11,8 +11,6 @@
 {% block page_content %}
 
 
-
-
     <section class="product-page spad">
         <div class="container">
             <div class="row">
@@ -66,42 +64,42 @@
                     </div>
                     <div class="product__pagination">
                         {% if order_by %}
-                        {% if page_obj.has_previous %}
-                            <a href="?page={{ page_obj.previous_page_number }}&ordering={{ order_by }}"><i
-                                    class="fa fa-angle-double-left"></i></a>
-                        {% endif %}
-                        {% for page in paginator.page_range %}
-                            {% if page_obj.number == page %}
-                                <a href="?page={{ page.numerator }}&ordering={{ order_by }}"
-                                   class="current-page">{{ page.numerator }}</a>
-                            {% else %}
-                                <a href="?page={{ page.numerator }}&ordering={{ order_by }}">{{ page.numerator }}</a>
+                            {% if page_obj.has_previous %}
+                                <a href="?page={{ page_obj.previous_page_number }}&ordering={{ order_by }}"><i
+                                        class="fa fa-angle-double-left"></i></a>
                             {% endif %}
-                        {% endfor %}
-                        {% if page_obj.has_next %}
+                            {% for page in paginator.page_range %}
+                                {% if page_obj.number == page %}
+                                    <a href="?page={{ page.numerator }}&ordering={{ order_by }}"
+                                       class="current-page">{{ page.numerator }}</a>
+                                {% else %}
+                                    <a href="?page={{ page.numerator }}&ordering={{ order_by }}">{{ page.numerator }}</a>
+                                {% endif %}
+                            {% endfor %}
+                            {% if page_obj.has_next %}
 
-                            <a href="?page={{ page_obj.next_page_number }}&ordering={{ order_by }}"><i
-                                    class="fa fa-angle-double-right"></i></a>
-                        {% endif %}
+                                <a href="?page={{ page_obj.next_page_number }}&ordering={{ order_by }}"><i
+                                        class="fa fa-angle-double-right"></i></a>
+                            {% endif %}
                         {% else %}
-                     {% if page_obj.has_previous %}
-                            <a href="?page={{ page_obj.previous_page_number }}"><i
-                                    class="fa fa-angle-double-left"></i></a>
-                        {% endif %}
-                        {% for page in paginator.page_range %}
-                            {% if page_obj.number == page %}
-                                <a href="?page={{ page.numerator }}"
-                                   class="current-page">{{ page.numerator }}</a>
-                            {% else %}
-                                <a href="?page={{ page.numerator }}">{{ page.numerator }}</a>
+                            {% if page_obj.has_previous %}
+                                <a href="?page={{ page_obj.previous_page_number }}"><i
+                                        class="fa fa-angle-double-left"></i></a>
                             {% endif %}
-                        {% endfor %}
-                        {% if page_obj.has_next %}
+                            {% for page in paginator.page_range %}
+                                {% if page_obj.number == page %}
+                                    <a href="?page={{ page.numerator }}"
+                                       class="current-page">{{ page.numerator }}</a>
+                                {% else %}
+                                    <a href="?page={{ page.numerator }}">{{ page.numerator }}</a>
+                                {% endif %}
+                            {% endfor %}
+                            {% if page_obj.has_next %}
 
-                            <a href="?page={{ page_obj.next_page_number }}"><i
-                                    class="fa fa-angle-double-right"></i></a>
+                                <a href="?page={{ page_obj.next_page_number }}"><i
+                                        class="fa fa-angle-double-right"></i></a>
+                            {% endif %}
                         {% endif %}
-                    {% endif %}
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-8">

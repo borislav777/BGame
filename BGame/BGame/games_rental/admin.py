@@ -15,7 +15,9 @@ class GenreAdmin(admin.ModelAdmin):
 
 @admin.register(Game)
 class GameAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('name', 'publisher', 'release_date', 'genre', 'add_date')
+    list_filter = ('add_date', 'genre', 'publisher')
+    preserve_filters = ('add_date',)
 
 
 @admin.register(Review)

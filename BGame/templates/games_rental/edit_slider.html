@@ -4,15 +4,12 @@
 
 {% block page_content %}
 
-
-    <section class="normal-breadcrumb set-bg" data-setbg="{% static 'img/codmobile-hero2.jpg'%}">
+    <section class="normal-breadcrumb set-bg" data-setbg="{% static 'img/codmobile-hero2.jpg' %}">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="normal__breadcrumb__text">
-                        <h2>EDIT SLIDER</h2>
-
-
+                        <h2>Edit Slider</h2>
                     </div>
 
                 </div>
@@ -21,23 +18,13 @@
     </section>
     <div>
         <div class="login__form">
-            <form  action="{% url 'edit slidebar' object.pk %}" method="post" enctype="multipart/form-data">
+            <form action="{% url 'edit slider' object.pk %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form }}
-
-
-
                 <button type="submit" class="register-btn">Edit</button>
 
             </form>
-
-
         </div>
-
     </div>
-
-
-
-
 
 {% endblock %}

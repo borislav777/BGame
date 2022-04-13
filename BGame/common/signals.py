@@ -31,9 +31,8 @@ def pre_save_game_image(instance, **kwargs):
             new_img = instance.image.path
         except:
             new_img = None
-        if new_img != old_img:
-            import os
-            if os.path.exists(old_img):
-                os.remove(old_img)
+        if new_img != old_img and os.path.exists(old_img):
+            os.remove(old_img)
+
     except:
         pass
