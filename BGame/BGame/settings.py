@@ -86,8 +86,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'BGame.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
+
 DATABASES = None
 
 if APP_ENVIRONMENT == 'Production':
