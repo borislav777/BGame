@@ -716,7 +716,10 @@ ol {
     position: relative;
     border-radius: 5px;
     width: 240px;
+    margin-right: 300px;
 }
+
+
 
 
 .product__item__pic .ep {
@@ -1055,6 +1058,7 @@ ol {
     position: relative;
     width: 310px;
     margin-left: -45px;
+    margin-top: 20px;
 }
 
 

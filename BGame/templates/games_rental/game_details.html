@@ -91,6 +91,7 @@
                             </div>
                         {% endfor %}
                     </div>
+                {% if not request.user.is_staff %}
                     <div class="game__details__form">
                         <div class="section-title">
                             <h5>Your Review</h5>
@@ -102,6 +103,7 @@
                             <button type="submit"><i class="fa fa-location-arrow"></i> Review</button>
                         </form>
                     </div>
+                {% endif %}
                 </div>
                 <div class="col-lg-4 col-md-4">
                     <div class="game__details__sidebar">

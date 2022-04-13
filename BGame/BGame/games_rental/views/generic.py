@@ -22,7 +22,7 @@ class HomeView(views.ListView):
         slider = Slider.objects.all()
         price_per_day = PRICE_PER_DAY
         popular = self.object_list.order_by('-likes')[:4]
-        coming = self.model.objects.filter(release_date__gt=datetime.date.today())[:4]
+        coming = self.model.objects.filter(release_date__gt=datetime.date.today()).order_by('release_date')[:4]
         recently_added = self.object_list.order_by('-add_date')[:4]
         context.update({
             'popular': popular,
