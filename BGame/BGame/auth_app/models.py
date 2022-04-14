@@ -1,9 +1,9 @@
 from django.contrib.auth import models as auth_models
 from django.core.validators import RegexValidator, MinLengthValidator, MinValueValidator
 from django.db import models
-import cloudinary
+from cloudinary.models import CloudinaryField
 from BGame.auth_app.managers import BGameUserManager
-from common.validators import validate_only_letters, ValidateFileMaxSizeInMb
+from common.validators import validate_only_letters
 
 
 class BGameUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
@@ -72,7 +72,7 @@ class Profile(models.Model):
         blank=True,
     )
 
-    picture = cloudinary.CloudinaryImage('image')
+    picture = CloudinaryField('image')
 
     description = models.TextField(
         null=True,

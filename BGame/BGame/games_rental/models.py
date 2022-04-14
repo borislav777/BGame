@@ -1,11 +1,9 @@
-import cloudinary
+from cloudinary.models import CloudinaryField
 import django.utils.timezone
 
 from django.contrib.auth import get_user_model
 from django.core.validators import MinLengthValidator
 from django.db import models
-
-from common.validators import ValidateFileMaxSizeInMb
 
 UserModel = get_user_model()
 
@@ -67,7 +65,7 @@ class Game(models.Model):
 
     description = models.TextField()
 
-    image = cloudinary.CloudinaryImage('image')
+    image = CloudinaryField('image')
 
     likes = models.IntegerField(
         default=0,
@@ -148,12 +146,7 @@ class CustomerGameRent(models.Model):
 
 
 class Slider(models.Model):
-    image = models.ImageField(
-        upload_to='slider',
-        validators=(
-            ValidateFileMaxSizeInMb(7),
-        )
-    )
+    image = CloudinaryField('image')
 
     game = models.ForeignKey(
         Game,
