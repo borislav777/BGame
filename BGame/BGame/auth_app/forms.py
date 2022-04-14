@@ -1,8 +1,6 @@
 from django import forms
 from django.contrib.auth import forms as auth_forms, get_user_model
 
-from django.core.exceptions import ValidationError
-
 from BGame.auth_app.models import Profile
 
 
@@ -32,15 +30,7 @@ class UserRegisterForm(auth_forms.UserCreationForm):
         required=False,
     )
 
-    # def clean_email(self):
-    #
-    #     data = self.cleaned_data['email']
-    #     if Profile.objects.filter(email=data).count() > 0:
-    #         raise ValidationError("We have a user with this Email")
-    #     return data
-
     def save(self, commit=True):
-
         user = super().save(commit=commit)
 
         profile = Profile(
@@ -59,7 +49,7 @@ class UserRegisterForm(auth_forms.UserCreationForm):
 
     class Meta:
         model = get_user_model()
-        fields = ('username', 'password1', 'password2', 'email','first_name', 'last_name', 'picture', 'description')
+        fields = ('username', 'password1', 'password2', 'email', 'first_name', 'last_name', 'picture', 'description')
 
 
 class EditProfileForm(forms.ModelForm):
