@@ -1,3 +1,4 @@
+import cloudinary
 import django.utils.timezone
 
 from django.contrib.auth import get_user_model
@@ -66,12 +67,7 @@ class Game(models.Model):
 
     description = models.TextField()
 
-    image = models.ImageField(
-        upload_to='games',
-        validators=(
-            ValidateFileMaxSizeInMb(5),
-        )
-    )
+    image = cloudinary.CloudinaryImage('image')
 
     likes = models.IntegerField(
         default=0,
