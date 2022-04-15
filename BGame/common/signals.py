@@ -21,8 +21,11 @@ def game_delete(instance, **kwargs):
 
 @receiver(signals.pre_delete, sender=BGameUser)
 def profile_image_delete(instance, **kwargs):
+    try:
+        cloudinary.uploader.destroy(instance.profile.picture.public_id)
 
-    cloudinary.uploader.destroy(instance.profile.picture.public_id)
+    except:
+        pass
 
 
 @receiver(signals.pre_save, sender=Game)

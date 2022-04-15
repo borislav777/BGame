@@ -96,4 +96,6 @@ def like_game_view(request, pk):
 
 class ReturnGameView(LoginRequired, views.DeleteView):
     model = CustomerGameRent
-    success_url = reverse_lazy('index')
+
+    def get_success_url(self):
+        return reverse_lazy('profile', kwargs={'pk': self.object.user.pk})

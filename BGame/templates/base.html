@@ -78,7 +78,7 @@
             <div class="col-lg-2">
                 <div class="header__right">
 
-                    {% if request.user.is_authenticated %}
+                    {% if request.user.is_authenticated and request.user.profile %}
                         <a href="{% url 'profile' request.user.pk %}"><span class="icon_profile"></span></a>
 
 
@@ -107,7 +107,7 @@
                 <div class="footer__nav">
                     <ul>
                         <li class="active"><a href="{% url 'index' %}">Homepage</a></li>
-                        <li><a href="{% url 'game details' 4 %}">Catalogue</a></li>
+                        <li><a href="{% url 'catalogue' %}">Catalogue</a></li>
 
                         <li><a href="{% url 'contact' %}">Contacts</a></li>
                     </ul>
