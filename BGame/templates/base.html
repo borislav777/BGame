@@ -48,7 +48,7 @@
                                     href="{% url 'catalogue' %}">Catalogue</a></li>
 
 
-                            <li><a href="{% url 'contact' %}">Contacts</a></li>
+                            <li class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}"><a href="{% url 'contact' %}">Contacts</a></li>
                             {% if request.user.is_staff %}
                                 <li><a href="{% url 'admin:index' %}">Admin <span class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
